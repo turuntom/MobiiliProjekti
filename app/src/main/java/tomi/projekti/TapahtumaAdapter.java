@@ -1,6 +1,8 @@
 package tomi.projekti;
 
 import android.content.Context;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,7 +101,9 @@ public class TapahtumaAdapter extends ArrayAdapter<Tapahtuma> {
         TextView popLyhyt = tapahtumaView.findViewById(R.id.lyhytPopText);
         TextView popPitka = tapahtumaView.findViewById(R.id.pitkaPopText);
 
+        Log.d("niminimi", "showTapahtumaInfo: "+tapahtuma.getNimi());
         popNimi.setText(tapahtuma.getNimi());
+        Log.d("niminimi", "showTapahtumaInfo: "+tapahtuma.getStart_time());
         popAika.setText(tapahtuma.getStart_time());
         popInfo.setText(tapahtuma.getInfo_url());
         popLyhyt.setText(tapahtuma.getShort_description());

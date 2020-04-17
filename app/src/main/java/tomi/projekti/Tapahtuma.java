@@ -9,7 +9,7 @@ public class Tapahtuma {
     private String info_url; // {info_url}.fi
 
 
-    public Tapahtuma(String nimi, String short_description, String created_time, String info_url, String long_description){
+    public Tapahtuma(String nimi, String short_description, String start_time, String info_url, String long_description){
         this.start_time = start_time;
         this.short_description = short_description;
         this.info_url = info_url;
