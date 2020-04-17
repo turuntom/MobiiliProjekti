@@ -23,26 +23,22 @@ public class GetJSON extends AsyncTask<Void, Void, JSONObject>
 {
 
     public interface ICallBack{
-        void getTapahtumat(JSONObject jsonObject);
+        void getJSONResponse(JSONObject jsonObject);
     }
 
     ICallBack mCallBack;
-    String paikkaId;
-    public GetJSON(String paikkaId,ICallBack mCallBack){
+    String url;
+    public GetJSON(String url,ICallBack mCallBack){
         this.mCallBack = mCallBack;
-        this.paikkaId = paikkaId;
+        this.url = url;
     }
 
     @Override
     protected JSONObject doInBackground(Void... params)
     {
 
-        String str = "";
-        if(paikkaId == ""){
-            str="https://api.hel.fi/linkedevents/v1/event/?format=json";
-        }else{
-            str="https://api.hel.fi/linkedevents/v1/event/?location=tprek:"+paikkaId;
-        }
+        String str = url;
+
         URLConnection urlConn = null;
         BufferedReader bufferedReader = null;
         try
@@ -84,7 +80,7 @@ public class GetJSON extends AsyncTask<Void, Void, JSONObject>
         if(response != null)
         {
             try {
-                mCallBack.getTapahtumat(response);
+                mCallBack.getJSONResponse(response);
             } catch (Exception ex) {
                 Log.e("App", "Failure returning Response from GETJSON", ex);
             }
